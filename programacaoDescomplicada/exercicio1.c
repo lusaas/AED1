@@ -1,3 +1,5 @@
+//manipulação de variáveis com ponteiros
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -19,4 +21,5 @@ int main () {
     *c2 = "oii";
 
     printf("%d\n%f\n%s", i, f, c);
+
 }
