@@ -1,0 +1,73 @@
+Dr. Memory version 2.6.0 build 0 built on Sep 21 2023 17:38:58
+Windows version: WinVer=105;Rel=2009;Build=19045;Edition=Professional
+Dr. Memory results for pid 16336: "agenda.exe"
+Application cmdline: "agenda.exe"
+Recorded 124 suppression(s) from default C:\Program Files (x86)\Dr. Memory\bin64\suppress-default.txt
+
+Error #1: UNADDRESSABLE ACCESS beyond top of stack: reading 0x000000000061fb40-0x000000000061fb48 8 byte(s)
+# 0 ___chkstk_ms                            [../../../../../src/gcc-8.1.0/libgcc/config/i386/cygwin.S:132]
+# 1 _pei386_runtime_relocator               [C:\projetos\agenda/agenda.c:166]
+# 2 __tmainCRTStartup
+# 3 .l_start  
+# 4 KERNEL32.dll!BaseThreadInitThunk
+Note: @0:00:00.113 in thread 12180
+Note: 0x000000000061fb40 refers to 600 byte(s) beyond the top of the stack 0x000000000061fd98
+Note: instruction: or     $0x0000000000000000 (%rcx) -> (%rcx)
+
+Error #2: UNADDRESSABLE ACCESS of freed memory: reading 0x00000000018478a0-0x00000000018478a1 1 byte(s)
+# 0 replace_strcmp               [D:\a\drmemory\drmemory\drmemory\replace.c:488]
+# 1 searchPerson                 [C:\projetos\agenda/agenda.c:137]
+# 2 main                         [C:\projetos\agenda/agenda.c:35]
+Note: @0:07:06.668 in thread 12180
+Note: prev lower malloc:  0x0000000001847870-0x0000000001847872
+Note: 0x00000000018478a0-0x00000000018478a1 overlaps memory 0x00000000018478a0-0x0000000001849898 that was freed here:
+Note: # 0 replace_free               [D:\a\drmemory\drmemory\common\alloc_replace.c:2710]
+Note: # 1 insertPerson               [C:\projetos\agenda/agenda.c:85]
+Note: # 2 main                       [C:\projetos\agenda/agenda.c:29]
+Note: instruction: movzx  (%rax) -> %eax
+
+Error #3: UNINITIALIZED READ: reading register rax
+# 0 replace_strcmp               [D:\a\drmemory\drmemory\drmemory\replace.c:493]
+# 1 searchPerson                 [C:\projetos\agenda/agenda.c:137]
+# 2 main                         [C:\projetos\agenda/agenda.c:35]
+Note: @0:07:06.668 in thread 12180
+Note: instruction: movzx  (%rax) -> %eax
+
+Error #4: UNADDRESSABLE ACCESS: reading 0x0000000000000000-0x0000000000000001 1 byte(s)
+# 0 replace_strcmp               [D:\a\drmemory\drmemory\drmemory\replace.c:493]
+# 1 searchPerson                 [C:\projetos\agenda/agenda.c:137]
+# 2 main                         [C:\projetos\agenda/agenda.c:35]
+Note: @0:07:06.673 in thread 12180
+Note: instruction: movzx  (%rax) -> %eax
+
+Error #5: UNINITIALIZED READ: reading 0x000000000061e0aa-0x000000000061e0b0 6 byte(s) within 0x000000000061e0a0-0x000000000061e0c8
+# 0 ntdll.dll!RtlCaptureContext2    +0x409    (0x00007ff83ed51c39 <ntdll.dll+0xa1c39>)
+# 1 ntdll.dll!RtlUnwindEx           +0x565    (0x00007ff83ece0b66 <ntdll.dll+0x30b66>)
+# 2 ntdll.dll!RtlUserThreadStart    +0x20     (0x00007ff83ecfcc91 <ntdll.dll+0x4cc91>)
+Note: @0:07:08.283 in thread 12180
+Note: instruction: iret   %rsp (%rsp) -> %rsp
+
+===========================================================================
+FINAL SUMMARY:
+
+DUPLICATE ERROR COUNTS:
+	Error #   1:      2
+	Error #   5:      3
+
+SUPPRESSIONS USED:
+
+ERRORS FOUND:
+      3 unique,     4 total unaddressable access(es)
+      2 unique,     4 total uninitialized access(es)
+      0 unique,     0 total invalid heap argument(s)
+      0 unique,     0 total GDI usage error(s)
+      0 unique,     0 total handle leak(s)
+      0 unique,     0 total warning(s)
+      0 unique,     0 total,      0 byte(s) of leak(s)
+      0 unique,     0 total,      0 byte(s) of possible leak(s)
+ERRORS IGNORED:
+      5 potential error(s) (suspected false positives)
+         (details: C:\Users\Luísa\AppData\Roaming\Dr. Memory\DrMemory-agenda.exe.16336.000\potential_errors.txt)
+     11 unique,    17 total,   6144 byte(s) of still-reachable allocation(s)
+         (re-run with "-show_reachable" for details)
+Details: C:\Users\Luísa\AppData\Roaming\Dr. Memory\DrMemory-agenda.exe.16336.000\results.txt
